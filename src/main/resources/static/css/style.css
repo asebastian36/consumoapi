@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .layout {
@@ -15,12 +16,19 @@
     background-color: transparent;
 }
 
-.layout li {
+.layout a, li {
     list-style-type: none;
+    text-decoration: none;
 }
 
-.nombre {
+.layout .nombre {
     text-align: center;
     background-color: gray;
     color: white;
+    max-width: 225px;
+}
+
+.layout img {
+    width: 225px;
+    height: 350px;
 }
