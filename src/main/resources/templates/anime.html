@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${titulo}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <br>
+    <h2 th:text="${anime.nombreJapones}"></h2>
+    <div>
+        <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
+    </div>
+    <p th:text="${anime.sinopsis}"></p>
+    <br>
+    <p th:text="${anime.status}"></p>
+    <br>
+    <p th:text="${anime.clasificacion}"></p>
+    <div>
+        <h3>Genres</h3>
+        <ul>
+            <li th:each="genero : ${anime.generos}">
+                <span th:text="${genero}"></span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h3>Openings</h3>
+        <ul>
+            <li th:each="opening : ${anime.openings}">
+                <span th:text="${opening}"></span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h3>Endings</h3>
+        <ul>
+            <li th:each="ending : ${anime.endings}">
+                <span th:text="${ending}"></span>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
