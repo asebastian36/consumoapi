@@ -13,6 +13,7 @@ public class ConsumoApi {
     public static final String URL_INICIAL = "https://api.jikan.moe/v4/anime";
     public static String urlDinamica = "https://api.jikan.moe/v4/anime?page=";
     public static String urlBusqueda = "https://api.jikan.moe/v4/anime/{id}/full";
+    public static String urlPersonajes = "https://api.jikan.moe/v4/anime/{id}/characters";
 
     public static void inicio() {
         try {

@@ -14,6 +14,7 @@ public class Anime {
     private List<String> generos;
     private List<String> openings;
     private List<String> endings;
+    private List<Personaje> personajes;
 
     public Anime() {
 
@@ -127,6 +128,14 @@ public class Anime {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Personaje> getPersonajes() {
+        return this.personajes;
+    }
+
+    public void setPersonajes(List<Personaje> personajes) {
+        this.personajes = personajes;
     }
 
     @Override
