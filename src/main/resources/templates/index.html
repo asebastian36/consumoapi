@@ -9,35 +9,12 @@
 
 <body>
     <h1 th:text="${titulo}"></h1>
+
+    <nav>
+        <a th:href="@{/anime/listado/1}">Listado de anime</a>
+    </nav>
+
     <h2 th:text="${subtitulo}"></h2>
-    <div th:if="${animes.size() == 0}">
-        No hay animes en la lista
-    </div>
-    </div>
-    <ul class="layout" th:if="${!animes.isEmpty()}">
-        <li th:each="anime : ${animes}">
-            <a th:href="@{/anime/} + ${anime.id}">
-                <div>
-                    <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
-                </div>
-            </a>
-
-        </li>
-    </ul>
-
-    <div>
-        <ul class="paginacion">
-            <li>
-                <a href="@{/anime/listado/} + (${pagina} - 1)">Anterior</a>
-            </li>
-            <li th:each="pagina : ${paginacion}">
-                <a th:href="@{/anime/listado/} + ${pagina}" th:text="${pagina}"></a>
-            </li>
-            <li>
-                <a href="@{/anime/listado/} + (${pagina} + 1)">Siguiente</a>
-            </li>
-        </ul>
-    </div>
 </body>
 
 </html>

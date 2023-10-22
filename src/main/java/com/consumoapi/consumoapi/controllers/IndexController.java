@@ -16,11 +16,7 @@ public class IndexController {
     @RequestMapping(value = { "/index", "/", "" })
     public String listar(Model model) {
         model.addAttribute("titulo", "AnimeTracker");
-        model.addAttribute("subtitulo", "Listado de anime");
-        List<Anime> animes = AnimeService.getAnimes(1);
-        model.addAttribute("animes", animes);
-        paginacion = AnimeService.paginacion;
-        model.addAttribute("paginacion", paginacion);
+        model.addAttribute("subtitulo", "Bienvenid@");
         return "index";
     }
 
