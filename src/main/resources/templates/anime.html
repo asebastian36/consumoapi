@@ -8,69 +8,73 @@
 </head>
 
 <body>
-    <h1 th:text="${titulo}"></h1>
-    <br>
-    <h2 th:text="${anime.nombreJapones}"></h2>
-    <br>
-    <div class="principal">
-        <div>
-            <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
+    <section>
+        <div th:each="anime : ${anime}"></div>
+        <h1 th:text="${anime.nombre}"></h1>
+        <br>
+        <h2 th:text="${anime.nombreJapones}"></h2>
+        <br>
+        <div class="principal">
+            <div>
+                <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
+            </div>
+            <p th:text="${anime.sinopsis}"></p>
+            <br>
+            <p th:text="${anime.status}"></p>
+            <br>
+            <p th:text="${anime.clasificacion}"></p>
         </div>
-        <p th:text="${anime.sinopsis}"></p>
-        <br>
-        <p th:text="${anime.status}"></p>
-        <br>
-        <p th:text="${anime.clasificacion}"></p>
-    </div>
 
-    <div>
-        <h3>Genres</h3>
-        <br>
-        <ul>
-            <li th:each="genero : ${anime.generos}">
-                <span th:text="${genero}"></span>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h3>Characters</h3>
-        <div class="personajes">
+        <div>
+            <h3>Genres</h3>
+            <br>
             <ul>
-                <div>
-                    <li th:each="personaje : ${anime.personajes}">
-                        <div>
-                            <img th:src="${personaje.imagen}" alt="'Imagen de' ${personaje.nombre}">
-                        </div>
-                        <div>
-                            <span th:text="${personaje.nombre}"></span>
-                            <br>
-                            <span th:text="${personaje.rol}"></span>
-                        </div>
-
-                    </li>
-                </div>
-
+                <li th:each="genero : ${anime.generos}">
+                    <span th:text="${genero}"></span>
+                </li>
             </ul>
         </div>
+        <div>
+            <h3>Characters</h3>
+            <div class="personajes">
+                <ul>
+                    <div>
+                        <li th:each="personaje : ${personajes}">
+                            <div>
+                                <img th:src="${personaje.imagen}" alt="'Imagen de' ${personaje.nombre}">
+                            </div>
+                            <div>
+                                <span th:text="${personaje.nombre}"></span>
+                                <br>
+                                <span th:text="${personaje.rol}"></span>
+                            </div>
 
-    </div>
-    <div>
-        <h3>Openings</h3>
-        <br>
-        <ul>
-            <li th:each="opening : ${anime.openings}">
-                <span th:text="${opening}"></span>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h3>Endings</h3>
-        <ul>
-            <li th:each="ending : ${anime.endings}">
-                <span th:text="${ending}"></span>
-            </li>
-        </ul>
-    </div>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+
+        </div>
+        <div>
+            <h3>Openings</h3>
+            <br>
+            <ul>
+                <li th:each="opening : ${anime.openings}">
+                    <span th:text="${opening}"></span>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Endings</h3>
+            <ul>
+                <li th:each="ending : ${anime.endings}">
+                    <span th:text="${ending}"></span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
 </body>
 
 </html>
