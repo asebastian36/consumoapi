@@ -21,12 +21,10 @@ public class Anime {
 
     }
 
-    public Anime(int id, String nombre, String status, String imagen, String sinopsis) {
+    public Anime(int id, String nombre, String imagen) {
         this.id = id;
         this.nombre = nombre;
-        this.status = status;
         this.imagen = imagen;
-        this.sinopsis = sinopsis;
     }
 
     public Anime(int id, String nombre, String status, String imagen, String nombreJapones, String sinopsis,

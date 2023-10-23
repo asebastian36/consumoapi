@@ -21,7 +21,7 @@ public class IndexController {
     }
 
     @GetMapping("/anime/{id}")
-    public String busqueda(@PathVariable String id, Model model) {
+    public String busquedaId(@PathVariable String id, Model model) {
         Anime anime = AnimeService.busqueda(id);
         model.addAttribute("anime", anime);
         return "anime";
@@ -35,5 +35,12 @@ public class IndexController {
         model.addAttribute("animes", animes);
         model.addAttribute("paginacion", paginacion);
         return "listado";
+    }
+
+    @PostMapping("/anime/busqueda")
+    public String busqueda(@ModelAttribute("nombre") String nombre, Model model) {
+        List<Anime> animes = SearchAnimeService.getResultados(nombre);
+        model.addAttribute("animes", animes);
+        return "resultado";
     }
 }

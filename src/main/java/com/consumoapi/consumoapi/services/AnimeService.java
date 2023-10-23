@@ -42,10 +42,8 @@ public class AnimeService {
             System.out.println();
             int id = anime.getInt("mal_id");
             String nombre = anime.getString("title");
-            String status = anime.getString("status");
             String imagen = anime.getJSONObject("images").getJSONObject("jpg").getString("image_url");
-            String sinopsis = anime.getString("synopsis");
-            Anime animeActual = new Anime(id, nombre, status, imagen, sinopsis);
+            Anime animeActual = new Anime(id, nombre, imagen);
             animes.add(animeActual);
         }
 
