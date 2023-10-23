@@ -14,10 +14,9 @@ public class PersonajeService {
 
     public static List<Personaje> getAllCharacters(String id) {
         List<Personaje> personajes = new ArrayList<>();
-
+        System.out.println(urlPersonajes.replace("{id}", id));
         try {
             URL url = new URL(urlPersonajes.replace("{id}", id));
-            System.out.println(url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             // conectarnos
@@ -41,7 +40,7 @@ public class PersonajeService {
                 JSONArray jsonArray = json.getJSONArray("data");
 
                 personajes.addAll(mapeo(jsonArray));
-
+                System.out.println("Consumo exitoso de: " + url);
             }
         } catch (IOException | RuntimeException e) {
             System.out.println("Error al obtener los personajes");

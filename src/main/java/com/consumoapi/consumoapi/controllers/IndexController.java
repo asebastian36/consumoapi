@@ -22,9 +22,8 @@ public class IndexController {
 
     @GetMapping("/anime/{id}")
     public String busqueda(@PathVariable String id, Model model) {
-        model.addAttribute("titulo", "Resultado de busqueda");
-        model.addAttribute("anime", AnimeService.busqueda(Integer.parseInt(id)));
-        model.addAttribute("personajes", PersonajeService.getAllCharacters(id));
+        Anime anime = AnimeService.busqueda(id);
+        model.addAttribute("anime", anime);
         return "anime";
     }
 

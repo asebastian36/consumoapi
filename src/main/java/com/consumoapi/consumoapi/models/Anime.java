@@ -15,6 +15,7 @@ public class Anime {
     private List<String> openings;
     private List<String> endings;
     private List<Personaje> personajes;
+    private List<Recomendacion> recomendaciones;
 
     public Anime() {
 
@@ -29,7 +30,8 @@ public class Anime {
     }
 
     public Anime(int id, String nombre, String status, String imagen, String nombreJapones, String sinopsis,
-            String tipo, String clasificacion, List<String> generos, List<String> openings, List<String> endings) {
+            String tipo, String clasificacion, List<String> generos, List<String> openings, List<String> endings,
+            List<Recomendacion> recomendaciones, List<Personaje> personajes) {
         this.id = id;
         this.nombre = nombre;
         this.status = status;
@@ -41,6 +43,8 @@ public class Anime {
         this.generos = generos;
         this.openings = openings;
         this.endings = endings;
+        this.recomendaciones = recomendaciones;
+        this.personajes = personajes;
     }
 
     public String getNombreJapones() {
@@ -137,6 +141,14 @@ public class Anime {
 
     public void setPersonajes(List<Personaje> personajes) {
         this.personajes = personajes;
+    }
+
+    public List<Recomendacion> getRecomendaciones() {
+        return this.recomendaciones;
+    }
+
+    public void setRecomendaciones(List<Recomendacion> recomendaciones) {
+        this.recomendaciones = recomendaciones;
     }
 
     @Override

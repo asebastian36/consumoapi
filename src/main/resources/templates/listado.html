@@ -18,7 +18,7 @@
         <li th:each="anime : ${animes}">
             <a th:href="@{/anime/} + ${anime.id}">
                 <div>
-                    <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
+                    <img th:src="${anime.imagen}" th:alt="${anime.nombre}">
                 </div>
             </a>
 

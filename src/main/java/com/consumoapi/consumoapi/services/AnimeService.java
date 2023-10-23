@@ -6,6 +6,8 @@ import java.util.*;
 import org.json.*;
 
 import com.consumoapi.consumoapi.models.Anime;
+import com.consumoapi.consumoapi.models.Personaje;
+import com.consumoapi.consumoapi.models.Recomendacion;
 
 public class AnimeService {
     // Prueba para recopilar todos los animes
@@ -23,10 +25,10 @@ public class AnimeService {
         return animes;
     }
 
-    public static Anime busqueda(int id) {
+    public static Anime busqueda(String id) {
         Anime anime = new Anime();
 
-        String url = urlBusqueda.replace("{id}", id + "");
+        String url = urlBusqueda.replace("{id}", id);
         JSONObject data = solicitudObjeto(url);
         anime = mapeo(data);
         return anime;
@@ -58,7 +60,23 @@ public class AnimeService {
         String status = data.getString("status");
         String imagen = data.getJSONObject("images").getJSONObject("jpg").getString("image_url");
         String sinopsis = data.getString("synopsis");
-        Anime animeActual = new Anime(id, nombre, status, imagen, sinopsis);
+        List<Personaje> personajes = PersonajeService.getAllCharacters(id + "");
+        List<Recomendacion> recomendaciones = RecomendacionService.getRecomendations(id + "");
+        List<String> openings = new ArrayList<>();
+
+        for (int i = 0; i < data.getJSONObject("theme").getJSONArray("openings").length(); i++) {
+            openings.add(data.getJSONObject("theme").getJSONArray("openings").getString(i));
+        }
+
+        List<String> endings = new ArrayList<>();
+
+        for (int i = 0; i < data.getJSONObject("theme").getJSONArray("endings").length(); i++) {
+            endings.add(data.getJSONObject("theme").getJSONArray("endings").getString(i));
+        }
+        Anime animeActual = new Anime(id, nombre, status, imagen, nombre, sinopsis, imagen, sinopsis, null, openings,
+                endings,
+                recomendaciones, personajes);
+
         anime = animeActual;
 
         return anime;
