@@ -1,7 +1,6 @@
 package com.consumoapi.consumoapi.controllers;
 
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +38,8 @@ public class IndexController {
 
     @PostMapping("/anime/busqueda")
     public String busqueda(@ModelAttribute("nombre") String nombre, Model model) {
+        if (nombre.contains(" "))
+            nombre = nombre.replace(" ", "%20");
         List<Anime> animes = SearchAnimeService.getResultados(nombre);
         model.addAttribute("animes", animes);
         return "resultado";

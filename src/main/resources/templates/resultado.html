@@ -9,6 +9,17 @@
 
 <body>
     <h1 th:text="${titulo}"></h1>
+
+    <nav>
+        <a th:href="@{}">Inicio</a>
+        <a th:href="@{/anime/listado/1}">Listado de anime</a>
+    </nav>
+
+    <form th:action="@{/anime/busqueda}" method="post">
+        <input type="text" name="nombre" placeholder="Buscador de animes, manga, peliculas , etc...">
+        <input type="submit" value="Buscar">
+    </form>
+
     <div th:if="${animes.size() == 0}">
         No hay animes en la lista
     </div>
@@ -23,6 +34,8 @@
 
         </li>
     </ul>
+
+    <footer>Derechos reservados Anime Tracker</footer>
 </body>
 
 </html>

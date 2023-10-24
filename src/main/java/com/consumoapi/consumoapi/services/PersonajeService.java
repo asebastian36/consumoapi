@@ -1,11 +1,9 @@
 package com.consumoapi.consumoapi.services;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.*;
 import java.util.*;
 import org.json.*;
-
 import com.consumoapi.consumoapi.models.Personaje;
 
 public class PersonajeService {

@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.*;
 import org.json.*;
-
-import com.consumoapi.consumoapi.models.Anime;
-import com.consumoapi.consumoapi.models.Personaje;
-import com.consumoapi.consumoapi.models.Recomendacion;
+import com.consumoapi.consumoapi.models.*;
 
 public class AnimeService {
     // Prueba para recopilar todos los animes
