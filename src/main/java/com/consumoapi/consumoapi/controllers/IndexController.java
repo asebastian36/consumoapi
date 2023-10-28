@@ -16,6 +16,8 @@ public class IndexController {
     public String listar(Model model) {
         model.addAttribute("titulo", "AnimeTracker");
         model.addAttribute("subtitulo", "Bienvenid@");
+        model.addAttribute("animes", TemporadaService.getTemporadaActual());
+        model.addAttribute("temporadas", TemporadaService.getTemporadas());
         return "index";
     }
 

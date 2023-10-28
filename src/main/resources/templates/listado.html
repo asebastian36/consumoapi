@@ -11,7 +11,7 @@
     <h1 th:text="${titulo}"></h1>
 
     <nav>
-        <a th:href="@{}">Inicio</a>
+        <a th:href="@{/}">Inicio</a>
         <a th:href="@{/anime/listado/1}">Listado de anime</a>
     </nav>
 
@@ -23,7 +23,6 @@
     <h2 th:text="${subtitulo}"></h2>
     <div th:if="${animes.size() == 0}">
         No hay animes en la lista
-    </div>
     </div>
     <ul class="layout" th:if="${!animes.isEmpty()}">
         <li th:each="anime : ${animes}">

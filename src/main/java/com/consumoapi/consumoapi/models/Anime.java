@@ -154,7 +154,7 @@ public class Anime {
         return "{" +
                 " id='" + getId() + "'" +
                 ", nombre='" + getNombre() + "'" +
-                ", status='" + getStatus() + "'" +
+                ", imagen='" + getImagen() + "'" +
                 "}";
     }
 

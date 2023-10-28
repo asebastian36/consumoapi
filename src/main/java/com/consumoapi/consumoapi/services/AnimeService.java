@@ -124,7 +124,7 @@ public class AnimeService {
                 data = objeto.getJSONArray("data");
             }
         } catch (IOException | RuntimeException e) {
-            System.out.println("Error al obtener lista de animes");
+            System.out.println("Error al obtener: " + url);
         }
         return data;
     }
@@ -158,7 +158,7 @@ public class AnimeService {
                 System.out.println("consumo exitoso de la url: " + url.toString());
             }
         } catch (IOException | RuntimeException e) {
-            System.out.println("Error en la busqueda");
+            System.out.println("Error al obtener: " + url);
         }
 
         return data;
