@@ -53,4 +53,13 @@ public class IndexController {
             return "resultado";
         }
     }
+
+    @GetMapping("anime/season/{informacion}")
+    public String temporada(@PathVariable String informacion, Model model) {
+        model.addAttribute("titulo", "AnimeTracker");
+        model.addAttribute("subtitulo", "Bienvenid@");
+        List<Anime> animes = TemporadaService.getTemporadActual(informacion);
+        model.addAttribute("animes", animes);
+        return "temporada";
+    }
 }

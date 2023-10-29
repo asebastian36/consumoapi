@@ -11,10 +11,22 @@ public class TemporadaService {
     public static int paginasTotales;
     public static String urlTemporadaActual = "https://api.jikan.moe/v4/seasons/now";
     public static String urlTemporadas = "https://api.jikan.moe/v4/seasons";
+    public static String urlTemporada = "https://api.jikan.moe/v4/seasons/{year}/{station}";
     public static List<String> temporadas;
 
     public static List<Anime> getTemporadaActual() {
         JSONArray data = solicitudLista(urlTemporadaActual);
+        return mapeo(data);
+    }
+
+    public static List<Anime> getTemporadActual(String informacion) {
+        String[] info = informacion.split(" ");
+        String replace = urlTemporada.replace("{year}", info[1]);
+        String replace2 = replace.replace("{station}", info[0]);
+
+        String url = replace2;
+
+        JSONArray data = solicitudLista(url);
         return mapeo(data);
     }
 

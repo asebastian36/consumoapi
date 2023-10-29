@@ -36,21 +36,6 @@
         </li>
     </ul>
 
-    <div th:if="${temporadas.size() == 0}">
-        No hay temporadas en la lista
-    </div>
-
-    <ul th:if="${!temporadas.isEmpty()}">
-        <h3>Seasons</h3>
-        <li th:each="temporada : ${temporadas}">
-            <div>
-                <a th:href="">
-                    <p th:text="${temporada}"></p>
-                </a>
-            </div>
-        </li>
-    </ul>
-
     <footer>Derechos reservados Anime Tracker</footer>
 </body>
 
