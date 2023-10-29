@@ -44,7 +44,7 @@
         <h3>Seasons</h3>
         <li th:each="temporada : ${temporadas}">
             <div>
-                <a th:href="">
+                <a th:href="@{anime/season/} + ${temporada}">
                     <p th:text="${temporada}"></p>
                 </a>
             </div>

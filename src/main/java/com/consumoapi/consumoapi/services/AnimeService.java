@@ -51,12 +51,13 @@ public class AnimeService {
         Anime anime;
 
         int id = data.getInt("mal_id");
+         List<Recomendacion> recomendaciones = RecomendacionService.getRecomendations(id + "");
         String nombre = data.getString("title");
         String status = data.getString("status");
         String imagen = data.getJSONObject("images").getJSONObject("jpg").getString("image_url");
         String sinopsis = data.getString("synopsis");
         List<Personaje> personajes = PersonajeService.getAllCharacters(id + "");
-        List<Recomendacion> recomendaciones = RecomendacionService.getRecomendations(id + "");
+    
         List<String> openings = new ArrayList<>();
 
         for (int i = 0; i < data.getJSONObject("theme").getJSONArray("openings").length(); i++) {
