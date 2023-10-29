@@ -1,6 +1,8 @@
 package com.consumoapi.consumoapi.controllers;
 
-import java.util.List;
+import java.util.*;
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,10 +42,15 @@ public class IndexController {
 
     @PostMapping("/anime/busqueda")
     public String busqueda(@RequestParam String nombre, Model model) {
-        if (nombre.contains(" "))
-            nombre = nombre.replace(" ", "%20");
-        List<Anime> animes = SearchAnimeService.getResultados(nombre);
-        model.addAttribute("animes", animes);
-        return "resultado";
+        Pattern patron = Pattern.compile("[0-9]+");
+        if (patron.matcher(nombre).matches()) {
+            return busquedaId(nombre, model);
+        } else {
+            if (nombre.contains(" "))
+                nombre = nombre.replace(" ", "%20");
+            List<Anime> animes = SearchAnimeService.getResultados(nombre);
+            model.addAttribute("animes", animes);
+            return "resultado";
+        }
     }
 }
