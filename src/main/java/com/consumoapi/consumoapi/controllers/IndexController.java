@@ -39,7 +39,7 @@ public class IndexController {
     }
 
     @PostMapping("/anime/busqueda")
-    public String busqueda(@ModelAttribute String nombre, Model model) {
+    public String busqueda(@RequestParam String nombre, Model model) {
         if (nombre.contains(" "))
             nombre = nombre.replace(" ", "%20");
         List<Anime> animes = SearchAnimeService.getResultados(nombre);
