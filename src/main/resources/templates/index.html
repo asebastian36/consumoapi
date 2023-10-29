@@ -5,51 +5,59 @@
     <meta charset="UTF-8" />
     <title th:text="${titulo}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
 </head>
 
 <body>
-    <h1 th:text="${titulo}"></h1>
+    <header>
+        <a th:href="@{/}">
+            <h1 th:text="${titulo}"></h1>
+        </a>
+    </header>
 
-    <nav>
-        <a th:href="@{/}">Inicio</a>
-        <a th:href="@{/anime/listado/1}">Listado de anime</a>
-    </nav>
-
-    <form th:action="@{/anime/busqueda}" method="post">
-        <input type="text" name="nombre" placeholder="Buscador de animes, manga, peliculas , etc...">
-        <input type="submit" value="Buscar">
-    </form>
-
-    <h2 th:text="${subtitulo}"></h2>
-
-    <div th:if="${animes.size() == 0}">
-        No hay animes en la lista
+    <div>
+        <nav class="navegacion">
+            <a class="navegacion__enlace" th:href="@{/}">Inicio</a>
+            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Listado de anime</a>
+            <a class="navegacion__enlace" href="#">Busqueda</a>
     </div>
-
-    <ul class="layout" th:if="${!animes.isEmpty()}">
-        <li th:each="anime : ${animes}">
-            <a th:href="@{/anime/} + ${anime.id}">
-                <div>
-                    <img th:src="${anime.imagen}" th:alt="${anime.nombre}">
-                </div>
-            </a>
-        </li>
-    </ul>
-
-    <div th:if="${temporadas.size() == 0}">
-        No hay temporadas en la lista
-    </div>
-
-    <ul th:if="${!temporadas.isEmpty()}">
-        <h3>Seasons</h3>
-        <li th:each="temporada : ${temporadas}">
-            <div>
-                <a th:href="@{anime/season/} + ${temporada}">
-                    <p th:text="${temporada}"></p>
-                </a>
+    
+    <main class="contenedor">
+        <div class="flex">
+            <div th:if="${temporadas.size() == 0}">
+                No hay temporadas en la lista
             </div>
-        </li>
-    </ul>
+
+            <div>
+                <h3>Seasons</h3>
+                <div class="temporadas" th:if="${!temporadas.isEmpty()}">
+                    <div class="temporada" th:each="temporada : ${temporadas}">
+                        <a th:href="@{anime/season/} + ${temporada}">
+                            <p th:text="${temporada}"></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${animes.size() == 0}">
+                No hay animes en la lista
+            </div>
+            <div>
+                <h2>Season now</h2>
+                <div class="animes" th:if="${!animes.isEmpty()}">
+                    <div class="anime" th:each="anime : ${animes}">
+                        <a th:href="@{/anime/} + ${anime.id}">
+                            <img th:src="${anime.imagen}" th:alt="${anime.nombre}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <footer>Derechos reservados Anime Tracker</footer>
 </body>

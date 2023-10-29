@@ -1,34 +1,138 @@
-* {
-    margin: 0;
-    padding: 0;
+:root {
+    --blanco: #fff;
+
+    --primario: #FF8087;
+    --secundario: #754345;
+
+    /* extras */
+    --rojo: #DB252E;
+    --cafeOscuro: #423334;
+    --negro: #332A2B;
+
+    --fuentePrincipal: 'Outfit';
+}
+
+html {
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 62.5%;
 }
 
-.layout {
-    max-width: 1100px;
-    margin: 20px auto;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    background-color: transparent;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
-.layout a, li {
-    list-style-type: none;
+/* Globales */
+body {
+    background-color: var(--blanco);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--negro);
+}
+
+a {
     text-decoration: none;
 }
 
-.layout .nombre {
-    text-align: center;
-    background-color: gray;
-    color: white;
-    max-width: 270px;
+img {
+    width: 90%
 }
 
-.layout img {
-    width: 270px;
-    height: 420px;
+h1,
+h2,
+h3 {
+    text-align: center;
+    color: var(--negro);
+    font-family: var(--fuentePrincipal);
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+/* Navegacion */
+.navegacion {
+    background-color: var(--negro);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+.navegacion__enlace {
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+    padding-right: 2.5rem;
+}
+
+.navegacion__enlace:last-of-type {
+    margin-right: 0;
+}
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover {
+    color: var(--primario);
+}
+
+.flex {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 2rem;
+}
+
+/* animes */
+.animes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.temporadas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+}
+
+@media (min-width: 768px) {
+    .animes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+}
+
+.anime {
+    padding: 1rem;
+}
+
+.temporadas {
+    text-align: center;
+}
+
+.temporada__enlace:hover {
+    color: var(--secundario);
+}
+
+.temporada p {
+    font-size: smaller;
+    margin: 0;
+}
+
+.temporada a
+.temporada p {
+    width: max-content;
 }
