@@ -5,97 +5,117 @@
     <meta charset="UTF-8" />
     <title th:text="${titulo}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
 </head>
 
 <body>
-    <section>
-        <form th:action="@{/anime/busqueda}" method="post">
-            <input type="text" name="nombre" placeholder="Buscador de animes, manga, peliculas , etc...">
-            <input type="submit" value="Buscar">
-        </form>
+    <header>
+        <a th:href="@{/}">
+            <h1>AnimeTracker</h1>
+        </a>
+    </header>
 
-        <nav>
-            <a th:href="@{/}">Inicio</a>
-            <a th:href="@{/anime/listado/1}">Listado de anime</a>
-        </nav>
+    <div>
+        <nav class="navegacion">
+            <a class="navegacion__enlace" th:href="@{/}">Home</a>
+            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Anime list</a>
+            <a class="navegacion__enlace" href="busqueda.html">Search</a>
+    </div>
 
-        <h1 th:text="${anime.nombre}"></h1>
+    <main class="contenedor">
+        <h2 th:text="${anime.nombre}"></h2>
+        <h2 class="nombreJapones" th:text="${anime.nombreJapones}"></h2>
 
-        <br>
-        <h2 th:text="${anime.nombreJapones}"></h2>
-        <br>
-        <div class="principal">
+        <div class="resultado">
             <div>
                 <img th:src="${anime.imagen}" th:alt="'Imagen de ' + ${anime.nombre}">
             </div>
-            <p th:text="${anime.sinopsis}"></p>
-            <br>
-            <p th:text="${anime.status}"></p>
-            <br>
-            <p th:text="${anime.clasificacion}"></p>
+
+            <div>
+                <h3>Synopsis</h3>
+                <p th:text="${anime.sinopsis}"></p>
+            </div>
         </div>
 
-        <div th:if="${!(anime.generos == null || anime.generos.isEmpty())}">
-            <h3>Genres</h3>
-            <br>
-            <ul>
-                <li th:each="genero : ${anime.generos}">
-                    <span th:text="${genero}"></span>
-                </li>
-            </ul>
-        </div>
-        <div th:if="${!(anime.personajes == null || anime.personajes.isEmpty())}">
-            <h3>Characters</h3>
-            <div class="personajes">
-                <ul>
-                    <div>
-                        <li th:each="personaje : ${anime.personajes}">
-                            <div>
-                                <img th:src="${personaje.imagen}" alt="'Imagen de' ${personaje.nombre}">
-                            </div>
-                            <div>
-                                <span th:text="${personaje.nombre}"></span>
-                                <br>
-                                <span th:text="${personaje.rol}"></span>
-                            </div>
+        <div class="informacion">
+            <div th:if="${!(anime.generos == null || anime.generos.isEmpty())}">
+                <h3>Genres</h3>
 
-                        </li>
+                <div class="generos">
+                    <div th:each="genero : ${anime.generos}">
+                        <span th:text="${genero}"></span>
                     </div>
-
-                </ul>
+                </div>
+            </div>
+            <div>
+                <h3>Rating</h3>
+                <p th:text="${anime.clasificacion}"></p>
             </div>
 
+            <div>
+                <h3>Status</h3>
+                <p th:text="${anime.status}"></p>
+            </div>
         </div>
-        <div th:if="${!(anime.openings == null || anime.openings.isEmpty())}">
-            <h3>Openings</h3>
-            <br>
-            <ul>
-                <li th:each="opening : ${anime.openings}">
-                    <span th:text="${opening}"></span>
-                </li>
-            </ul>
+
+        <div th:if="${!(anime.personajes == null || anime.personajes.isEmpty())}">
+            <h3>Characters</h3>
+
+            <div class="personajes">
+                <div class="personaje" th:each="personaje : ${anime.personajes}">
+                    <div>
+                        <img th:src="${personaje.imagen}" alt="'Imagen de' ${personaje.nombre}">
+                    </div>
+
+                    <div>
+                        <span th:text="${personaje.nombre}"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div th:if="${!(anime.endings == null || anime.endings.isEmpty())}">
-            <h3>Endings</h3>
-            <ul>
-                <li th:each="ending : ${anime.endings}">
-                    <span th:text="${ending}"></span>
-                </li>
-            </ul>
+
+        <div class="soundtrack">
+            <div th:if="${!(anime.openings == null || anime.openings.isEmpty())}">
+                <h3>Openings</h3>
+
+                <div class="openings">
+                    <div class="opening" th:each="opening : ${anime.openings}">
+                        <span th:text="${opening}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${!(anime.endings == null || anime.endings.isEmpty())}">
+                <h3>Endings</h3>
+
+                <div class="ending">
+                    <div th:each="ending : ${anime.endings}">
+                        <span th:text="${ending}"></span>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
         <div th:if="${!(anime.recomendaciones == null || anime.recomendaciones.isEmpty())}">
             <h3>Recomendations</h3>
-            <ul>
-                <li th:each="recomendacion : ${anime.recomendaciones}">
+
+            <div class="recomendaciones">
+                <div class="recomendacion" th:each="recomendacion : ${anime.recomendaciones}">
                     <a th:href="@{/anime/} + ${recomendacion.id}">
                         <img th:src="${recomendacion.imagen}" th:alt="${recomendacion.nombre}">
                     </a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
 
-    <footer>Derechos reservados Anime Tracker
+    <footer>
+        Derechos reservados Anime Tracker
     </footer>
 </body>
 

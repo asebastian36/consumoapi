@@ -54,10 +54,12 @@ public class AnimeService {
          List<Recomendacion> recomendaciones = RecomendacionService.getRecomendations(id + "");
         String nombre = data.getString("title");
         String status = data.getString("status");
+        String nombreJapones = data.getString("title_japanese");
         String imagen = data.getJSONObject("images").getJSONObject("jpg").getString("image_url");
         String sinopsis = data.getString("synopsis");
+        String clasificacion = data.getString("rating");
         List<Personaje> personajes = PersonajeService.getAllCharacters(id + "");
-    
+        List<String> generos = mapeoGeneros(data.getJSONArray("genres"));
         List<String> openings = new ArrayList<>();
 
         for (int i = 0; i < data.getJSONObject("theme").getJSONArray("openings").length(); i++) {
@@ -69,7 +71,7 @@ public class AnimeService {
         for (int i = 0; i < data.getJSONObject("theme").getJSONArray("endings").length(); i++) {
             endings.add(data.getJSONObject("theme").getJSONArray("endings").getString(i));
         }
-        Anime animeActual = new Anime(id, nombre, status, imagen, nombre, sinopsis, imagen, sinopsis, null, openings,
+        Anime animeActual = new Anime(id, nombre, status, imagen, nombreJapones, sinopsis, imagen, clasificacion, generos, openings,
                 endings,
                 recomendaciones, personajes);
 
@@ -163,5 +165,17 @@ public class AnimeService {
         }
 
         return data;
+    }
+
+    private static List<String> mapeoGeneros(JSONArray data) {
+        List<String> generos = new ArrayList<>();
+
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject info = data.getJSONObject(i);
+            String genero = info.getString("name");
+            generos.add(genero);
+        }
+
+        return generos;
     }
 }

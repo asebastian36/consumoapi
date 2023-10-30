@@ -95,17 +95,20 @@ h3 {
     gap: 2rem;
 }
 
-/* animes */
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.nombreJapones {
+    font-family: 'Noto Sans JP';
+}
+
+/* animes de index y listado */
 .animes {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-}
-
-.temporadas {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
 }
 
 @media (min-width: 768px) {
@@ -117,6 +120,14 @@ h3 {
 
 .anime {
     padding: 1rem;
+}
+
+/* temporadas de index y pagina de temporadas */
+
+.temporadas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
 }
 
 .temporadas {
@@ -135,4 +146,37 @@ h3 {
 .temporada a
 .temporada p {
     width: max-content;
+}
+
+/* para pagina anime */
+
+.resultado,
+.soundtrack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+}
+
+.resultado img {
+    width: 70%;
+}
+
+.recomendacion img,
+.personajes img {
+    width: 15%;
+}
+
+.recomendaciones,
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(autofill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.informacion {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem;
+
+    text-align: center;
 }

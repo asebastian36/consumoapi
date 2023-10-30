@@ -5,46 +5,52 @@
     <meta charset="UTF-8" />
     <title th:text="${titulo}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
 </head>
 
 <body>
-    <h1 th:text="${titulo}"></h1>
+    <header>
+        <a th:href="@{/}">
+            <h1>AnimeTracker</h1>
+        </a>
+    </header>
 
-    <nav>
-        <a th:href="@{/}">Inicio</a>
-        <a th:href="@{/anime/listado/1}">Listado de anime</a>
-    </nav>
-
-    <form th:action="@{/anime/busqueda}" method="post">
-        <input type="text" name="nombre" placeholder="Buscador de animes, manga, peliculas , etc...">
-        <input type="submit" value="Buscar">
-    </form>
-
-    <h2 th:text="${subtitulo}"></h2>
-    <div th:if="${animes.size() == 0}">
-        No hay animes en la lista
+    <div>
+        <nav class="navegacion">
+            <a class="navegacion__enlace" th:href="@{/}">Home</a>
+            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Anime list</a>
+            <a class="navegacion__enlace" href="busqueda.html">Search</a>
     </div>
-    <ul class="layout" th:if="${!animes.isEmpty()}">
-        <li th:each="anime : ${animes}">
-            <a th:href="@{/anime/} + ${anime.id}">
-                <div>
-                    <img th:src="${anime.imagen}" th:alt="${anime.nombre}">
-                </div>
-            </a>
 
-        </li>
-    </ul>
+    <main>
+        <h2>Anime list</h2>
+
+        <div th:if="${animes.size() == 0}">
+            No hay animes en la lista
+        </div>
+
+        <div class="animes" th:if="${!animes.isEmpty()}">
+            <div class="anime" th:each="anime : ${animes}">
+                <a th:href="@{/anime/} + ${anime.id}">
+                    <img th:src="${anime.imagen}" th:alt="${anime.nombre}">
+                </a>
+            </div>
+        </div>
+    </main>
+
 
     <div>
         <ul class="paginacion">
-            <li>
-                <a href="@{/anime/listado/} + (${pagina} - 1)">Anterior</a>
+            <li th:if="${pagina} > 1">
+                <a th:href="@{/anime/listado/} + (${pagina} - 1)">Anterior</a>
             </li>
-            <li th:each="pagina : ${paginacion}">
-                <a th:href="@{/anime/listado/} + ${pagina}" th:text="${pagina}"></a>
-            </li>
-            <li>
-                <a href="@{/anime/listado/} + (${pagina} + 1)">Siguiente</a>
+
+            <li th:if="${pagina} < ${ultimaPagina}">
+                <a th:href="@{/anime/listado/} + (${pagina} + 1)">Siguiente</a>
             </li>
         </ul>
     </div>

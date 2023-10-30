@@ -21,12 +21,12 @@
 
     <div>
         <nav class="navegacion">
-            <a class="navegacion__enlace" th:href="@{/}">Inicio</a>
-            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Listado de anime</a>
-            <a class="navegacion__enlace" href="#">Busqueda</a>
+            <a class="navegacion__enlace" th:href="@{/}">Home</a>
+            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Anime list</a>
+            <a class="navegacion__enlace" href="busqueda.html">Search</a>
     </div>
     
-    <main class="contenedor">
+    <main>
         <div class="flex">
             <div th:if="${temporadas.size() == 0}">
                 No hay temporadas en la lista

@@ -2,7 +2,6 @@ package com.consumoapi.consumoapi.controllers;
 
 import java.util.*;
 import java.util.regex.Pattern;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +30,9 @@ public class IndexController {
 
     @GetMapping("/anime/listado/{id}")
     public String pagina(@PathVariable String id, Model model) {
-        model.addAttribute("titulo", "AnimeTracker");
-        model.addAttribute("subtitulo", "Listado de anime");
         List<Anime> animes = AnimeService.getAnimes(Integer.parseInt(id));
+        model.addAttribute("pagina", Integer.parseInt(id));
+        model.addAttribute("ultimaPagina", AnimeService.paginasTotales);
         model.addAttribute("animes", animes);
         model.addAttribute("paginacion", paginacion);
         return "listado";

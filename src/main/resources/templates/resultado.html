@@ -5,15 +5,26 @@
     <meta charset="UTF-8" />
     <title th:text="${titulo}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
 </head>
 
 <body>
-    <h1 th:text="${titulo}"></h1>
+    <header>
+        <a th:href="@{/}">
+            <h1 th:text="${titulo}"></h1>
+        </a>
+    </header>
 
-    <nav>
-        <a th:href="@{/}">Inicio</a>
-        <a th:href="@{/anime/listado/1}">Listado de anime</a>
-    </nav>
+    <div>
+        <nav class="navegacion">
+            <a class="navegacion__enlace" th:href="@{/}">Home</a>
+            <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Anime list</a>
+            <a class="navegacion__enlace" href="busqueda.html">Search</a>
+    </div>
 
     <form th:action="@{/anime/busqueda}" method="post">
         <input type="text" name="nombre" placeholder="Buscador de animes, manga, peliculas , etc...">
