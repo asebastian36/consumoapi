@@ -65,12 +65,29 @@ h3 {
 }
 
 /* Navegacion */
-.navegacion {
+.nav-bg {
     background-color: var(--negro);
-    padding: 1rem 0;
+}
+
+.navegacion {
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
+    flex-direction: column;
+    text-align: center;
+}
+
+.navegacion a {
+    padding: .5rem;
+}
+
+@media (min-width: 768px) {
+    .navegacion {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 1rem;
+        gap: 2rem;
+    }
 }
 
 .navegacion__enlace {
@@ -90,15 +107,26 @@ h3 {
 }
 
 .flex {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.contenedor {
-    max-width: 120rem;
-    margin: 0 auto;
+@media (min-width: 768px) {
+    .flex {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        gap: 2rem;
+    }
 }
+
+@media (min-width: 768px) {
+    .contenedor {
+        max-width: 120rem;
+        margin: 0 auto;
+    }
+
+}
+
 
 .nombreJapones {
     font-family: 'Noto Sans JP';
@@ -126,8 +154,16 @@ h3 {
 
 .temporadas {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
+}
+
+@media (min-width: 768px) {
+    .temporadas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
 }
 
 .temporadas {
@@ -143,8 +179,7 @@ h3 {
     margin: 0;
 }
 
-.temporada a
-.temporada p {
+.temporada a .temporada p {
     width: max-content;
 }
 

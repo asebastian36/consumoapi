@@ -19,21 +19,20 @@
         </a>
     </header>
 
-    <div>
+    <div class="nav-bg">
         <nav class="navegacion">
             <a class="navegacion__enlace" th:href="@{/}">Home</a>
             <a class="navegacion__enlace" th:href="@{/anime/listado/1}">Anime list</a>
             <a class="navegacion__enlace" href="busqueda.html">Search</a>
     </div>
-    
-    <main>
-        <div class="flex">
-            <div th:if="${temporadas.size() == 0}">
-                No hay temporadas en la lista
-            </div>
 
+    <main class="contenedor">
+        <div class="flex">
             <div>
                 <h3>Seasons</h3>
+                <div th:if="${temporadas.size() == 0}">
+                    No hay temporadas en la lista
+                </div>
                 <div class="temporadas" th:if="${!temporadas.isEmpty()}">
                     <div class="temporada" th:each="temporada : ${temporadas}">
                         <a th:href="@{anime/season/} + ${temporada}">
@@ -43,11 +42,11 @@
                 </div>
             </div>
 
-            <div th:if="${animes.size() == 0}">
-                No hay animes en la lista
-            </div>
             <div>
                 <h2>Season now</h2>
+                <div th:if="${animes.size() == 0}">
+                    No hay animes en la lista
+                </div>
                 <div class="animes" th:if="${!animes.isEmpty()}">
                     <div class="anime" th:each="anime : ${animes}">
                         <a th:href="@{/anime/} + ${anime.id}">
